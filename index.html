@@ -96,11 +96,16 @@
             }
         }
 
-// node list of all the buttons on the calculator
-
+        // node list of all the buttons on the calculator
         let buttons = document.querySelectorAll(".btn");
         console.log(buttons);
 
+        buttons.forEach((button) => {
+            button.addEventListener("click",(button) => {
+                // now we are accessing each buttons node on click.
+                console.log(button);
+            })
+        })
 
     </script>
 
