@@ -30,28 +30,28 @@
 
             <div class="numpad">
                 <div class="row row1">
-                    <div class="btn num num7"><p class="calcbtn">7</p></div>
-                    <div class="btn num num8"><p class="calcbtn">8</p></div>
-                    <div class="btn num num9"><p class="calcbtn">9</p></div>
-                    <div class="btn symbol divide"><p class="calcbtn operator">/</p></div>
+                    <div class="btn"><p class="numbtn">7</p></div>
+                    <div class="btn"><p class="numbtn">8</p></div>
+                    <div class="btn"><p class="numbtn">9</p></div>
+                    <div class="btn symbol divide"><p class="operatorbtn">/</p></div>
                 </div>
                 <div class="row row2">
-                    <div class="btn num num4"><p class="calcbtn">4</p></div>
-                    <div class="btn num num5"><p class="calcbtn">5</p></div>
-                    <div class="btn num num6"><p class="calcbtn">6</p></div>
-                    <div class="btn symbol multiply"><p class="calcbtn operator">*</p></div>
+                    <div class="btn"><p class="numbtn">4</p></div>
+                    <div class="btn"><p class="numbtn">5</p></div>
+                    <div class="btn"><p class="numbtn">6</p></div>
+                    <div class="btn symbol multiply"><p class="operatorbtn">*</p></div>
                 </div>
                 <div class="row row3">
-                    <div class="btn num num1"><p class="calcbtn">1</p></div>
-                    <div class="btn num num2"><p class="calcbtn">2</p></div>
-                    <div class="btn num num3"><p class="calcbtn">3</p></div>
-                    <div class="btn symbol subtract"><p class="calcbtn operator">-</p></div>
+                    <div class="btn"><p class="numbtn">1</p></div>
+                    <div class="btn"><p class="numbtn">2</p></div>
+                    <div class="btn"><p class="numbtn">3</p></div>
+                    <div class="btn symbol subtract"><p class="operatorbtn">-</p></div>
                 </div>
                 <div class="row row4">
-                    <div class="btn num num0"><p class="calcbtn">0</p></div>
-                    <div class="btn symbol dot"><p class="calcbtn">.</p></div>
-                    <div class="btn  symbol add"><p class="calcbtn">+</p></div>
-                    <div class="btn symbol equals"><p class="equalsbtn operator">=</p></div>
+                    <div class="btn"><p class="numbtn">0</p></div>
+                    <div class="btn"><p class="numbtn">.</p></div>
+                    <div class="btn  symbol add"><p class="operatorbtn">+</p></div>
+                    <div class="btn symbol equals"><p class="equalsbtn">=</p></div>
                 </div>
             </div>
 
@@ -62,6 +62,52 @@
 
 
     <script>
+        const OPERATORS = ['+', '-', '/', '*'];
+        //BUTTONS AND REFRENCES
+
+        //THE SCREEN!!
+        let screen = document.querySelector(".onscreen");
+
+        // reference our different button types with their classes
+
+        // number buttons ( and the dot . )
+        let numButtons = document.querySelectorAll(".numbtn");
+        numButtons.forEach((button) => {
+            button.addEventListener("click", event => {
+                // now we are accessing each buttons node on click.
+                let num = event.target;
+                screen.textContent += num.innerHTML;
+            })
+        })
+
+        //operator buttons
+        let operatorButtons = document.querySelectorAll(".operatorbtn");
+        operatorButtons.forEach((button) => {
+            button.addEventListener("click", event => {
+                let operator = event.target.innerHTML;
+                OPERATORS.forEach(operata => {
+                    if (screen.textContent.includes(operata)){
+                        calculate();
+                    }
+                })
+                screen.textContent += event.target.textContent;
+            })
+        })
+
+        // equals button
+        let equalsButton = document.querySelector(".equalsbtn");
+        equalsButton.addEventListener("click", calculate);
+
+        // clear button
+        let clearButton = document.querySelector(".clearbtn");
+        clearButton.addEventListener("click", clearScreen);
+
+        
+
+
+
+
+        // basic arithmetic functions
         function add(a, b){
             return a + b;
         }
@@ -81,7 +127,7 @@
         let num1;
         let num2;
         let operator;
-
+        // determines which operation to perform
         function operate(operator, num1, num2){
             num1 = +num1;
             num2 = +num2;
@@ -96,28 +142,6 @@
                     return divide(num1, num2);
             }
         }
-
-        // node list of all the buttons on the calculator
-        let buttons = document.querySelectorAll(".calcbtn");
-        let screen = document.querySelector(".onscreen");
-        console.log(buttons);
-
-        buttons.forEach((button) => {
-            button.addEventListener("click", event => {
-                // now we are accessing each buttons node on click.
-                num = event.target;
-                screen.textContent += num.innerHTML;
-            })
-        })
-
-
-        let clearButton = document.querySelector(".clearbtn");
-        function clearScreen(){
-            screen.textContent = "";
-        }
-        clearButton.addEventListener("click", clearScreen);
-
-        let equalsButton = document.querySelector(".equalsbtn");
 
         function calculate(){
             //WHEN BUTTON PUSHED GRAB THE HTML 
@@ -148,12 +172,13 @@
             //SPLIT THE DISPLAY ON THE MATH SYMBOL. 
             
             //PASS THE SPLITTERS INTO OPERATE.
-            
+        }
 
+        function clearScreen(){
+            screen.textContent = "";
         }
 
 
-        equalsButton.addEventListener("click", calculate);
 
     </script>
 
