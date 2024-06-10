@@ -51,7 +51,7 @@
                     <div class="btn num num0"><p class="calcbtn">0</p></div>
                     <div class="btn symbol dot"><p class="calcbtn">.</p></div>
                     <div class="btn symbol add"><p class="calcbtn">+</p></div>
-                    <div class="btn symbol equals"><p class="calcbtn">=</p></div>
+                    <div class="btn symbol equals"><p class="equalsbtn">=</p></div>
                 </div>
             </div>
 
@@ -116,6 +116,44 @@
             screen.textContent = "";
         }
         clearButton.addEventListener("click", clearScreen);
+
+        let equalsButton = document.querySelector(".equalsbtn");
+
+        function calculate(){
+            //WHEN BUTTON PUSHED GRAB THE HTML 
+            let equation = document.querySelector(".onscreen").innerHTML;
+
+            if (equation.includes("+")){
+                splitEquation = equation.split("+");
+                value = add(+splitEquation[0], +splitEquation[1])
+
+            }
+            else if (equation.includes("-")){
+                splitEquation = equation.split("-");
+                value = subtract(+splitEquation[0], +splitEquation[1])
+            }
+            else if (equation.includes("/")){
+                splitEquation = equation.split("/");
+                value = divide(+splitEquation[0], +splitEquation[1])
+
+            }
+            else if (equation.includes("*")){
+                splitEquation = equation.split("*");
+                value = multiply(+splitEquation[0], +splitEquation[1])
+
+            }
+            console.log(value)
+
+            screen.textContent = value;
+            //SPLIT THE DISPLAY ON THE MATH SYMBOL. 
+            
+            //PASS THE SPLITTERS INTO OPERATE.
+            
+
+        }
+
+
+        equalsButton.addEventListener("click", calculate);
 
     </script>
 
