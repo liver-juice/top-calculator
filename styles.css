@@ -46,6 +46,8 @@ div{
 .onscreen{
     color: rgb(48, 47, 47);
     font-size: 25px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .numpad{
@@ -94,6 +96,7 @@ div{
 }
 
 .btn p{
+
     display: flex;
     height: 100%;
     flex-grow: 1;

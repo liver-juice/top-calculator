@@ -25,32 +25,33 @@
                 <button class="clearbtn">Clear</button>
                 <p class="onscreen">
                     80085
+                </p>
             </div>
 
             <div class="numpad">
                 <div class="row row1">
-                    <div class="btn num num7"><p>7</p></div>
-                    <div class="btn num num8"><p>8</p></div>
-                    <div class="btn num num9"><p>9</p></div>
-                    <div class="btn symbol divide"><p>/</p></div>
+                    <div class="btn num num7"><p class="calcbtn">7</p></div>
+                    <div class="btn num num8"><p class="calcbtn">8</p></div>
+                    <div class="btn num num9"><p class="calcbtn">9</p></div>
+                    <div class="btn symbol divide"><p class="calcbtn">/</p></div>
                 </div>
                 <div class="row row2">
-                    <div class="btn num num4"><p>4</p></div>
-                    <div class="btn num num5"><p>5</p></div>
-                    <div class="btn num num6"><p>6</p></div>
-                    <div class="btn symbol multiply"><p>*</p></div>
+                    <div class="btn num num4"><p class="calcbtn">4</p></div>
+                    <div class="btn num num5"><p class="calcbtn">5</p></div>
+                    <div class="btn num num6"><p class="calcbtn">6</p></div>
+                    <div class="btn symbol multiply"><p class="calcbtn">*</p></div>
                 </div>
                 <div class="row row3">
-                    <div class="btn num num1"><p>1</p></div>
-                    <div class="btn num num2"><p>2</p></div>
-                    <div class="btn num num3"><p>3</p></div>
-                    <div class="btn symbol subtract"><p>-</p></div>
+                    <div class="btn num num1"><p class="calcbtn">1</p></div>
+                    <div class="btn num num2"><p class="calcbtn">2</p></div>
+                    <div class="btn num num3"><p class="calcbtn">3</p></div>
+                    <div class="btn symbol subtract"><p class="calcbtn">-</p></div>
                 </div>
                 <div class="row row4">
-                    <div class="btn num num0"><p>0</p></div>
-                    <div class="btn symbol dot"><p>.</p></div>
-                    <div class="btn symbol add"><p>+</p></div>
-                    <div class="btn symbol equals"><p>=</p></div>
+                    <div class="btn num num0"><p class="calcbtn">0</p></div>
+                    <div class="btn symbol dot"><p class="calcbtn">.</p></div>
+                    <div class="btn symbol add"><p class="calcbtn">+</p></div>
+                    <div class="btn symbol equals"><p class="calcbtn">=</p></div>
                 </div>
             </div>
 
@@ -97,15 +98,24 @@
         }
 
         // node list of all the buttons on the calculator
-        let buttons = document.querySelectorAll(".btn");
+        let buttons = document.querySelectorAll(".calcbtn");
+        let screen = document.querySelector(".onscreen");
         console.log(buttons);
 
         buttons.forEach((button) => {
-            button.addEventListener("click",(button) => {
+            button.addEventListener("click", event => {
                 // now we are accessing each buttons node on click.
-                console.log(button);
+                num = event.target;
+                screen.textContent += num.innerHTML;
             })
         })
+
+
+        let clearButton = document.querySelector(".clearbtn");
+        function clearScreen(){
+            screen.textContent = "";
+        }
+        clearButton.addEventListener("click", clearScreen);
 
     </script>
 
