@@ -78,3 +78,17 @@ div{
     font-size: 32px;
 }
 
+.clearbtn{
+    font-family: "Montserrat";
+    position: absolute;
+    display: flex;
+    align-self: flex-start;
+    margin-right: 300px;
+    border: none;
+    background-color: rgb(71, 71, 71);
+    color: rgb(29, 29, 29);
+}
+
+.clearbtn:hover{
+    font-weight: bold;
+}

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +22,7 @@
     <div class="content">
         <div class="calculator">
             <div class="screen">
+                <button class="clearbtn">Clear</button>
                 <p class="onscreen">
                     80085
             </div>
@@ -56,6 +56,53 @@
 
         </div>
     </div>
+
+
+
+
+    <script>
+        function add(a, b){
+            return a + b;
+        }
+
+        function subtract(a, b){
+            return a - b;
+        }
+
+        function multiply(a, b){
+            return a * b;
+        }
+
+        function divide(a, b){
+            return a / b;
+        }
+
+        let num1;
+        let num2;
+        let operator;
+
+        function operate(operator, num1, num2){
+            num1 = +num1;
+            num2 = +num2;
+            switch(operator) {
+                case "+":
+                    return add(num1, num2);
+                case "-":
+                    return subtract(num1, num2);
+                case "*":
+                    return multiply(num1, num2);
+                case "/":
+                    return divide(num1, num2);
+            }
+        }
+
+// node list of all the buttons on the calculator
+
+        let buttons = document.querySelectorAll(".btn");
+        console.log(buttons);
+
+
+    </script>
 
 </body>
 </html>
