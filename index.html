@@ -24,7 +24,7 @@
             <div class="screen">
                 <button class="clearbtn">Clear</button>
                 <p class="onscreen">
-                    80085
+                    
                 </p>
             </div>
 
@@ -121,7 +121,14 @@
         }
 
         function divide(a, b){
-            return a / b;
+            if (a == 0 || b == 0){
+                return "RED ALERT";
+                
+            }
+            else {
+            let quotient = a / b;
+            return Math.round(quotient * 100) / 100;
+            }
         }
 
         let num1;
